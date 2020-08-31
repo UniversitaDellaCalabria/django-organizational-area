@@ -1,3 +1,5 @@
+import os
+
 from django.conf import settings
 from django.core.validators import RegexValidator
 from django.db import models
@@ -23,7 +25,7 @@ class OrganizationalStructureType(models.Model):
     """
     name = models.CharField(max_length=128, blank=True, unique=True)
     description = models.TextField(max_length=768, null=True,blank=True)
-    create_date = models.DateTimeField(auto_now=True)
+    create_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['name']
@@ -54,7 +56,7 @@ class OrganizationalStructure(models.Model):
                                        null=True, blank=True,
                                        on_delete=models.SET_NULL)
     description = models.TextField(max_length=1024, null=True,blank=True)
-    create_date = models.DateTimeField(auto_now=True)
+    create_date = models.DateTimeField(auto_now_add=True)
     banner = models.ImageField(upload_to=_logo_upload,
                                null=True, blank=True,
                                max_length=255)
@@ -101,7 +103,7 @@ class OrganizationalStructureFunction(models.Model):
     """
     name = models.CharField(max_length=128, blank=True, unique=True)
     description = models.TextField(max_length=768, null=True,blank=True)
-    create_date = models.DateTimeField(auto_now=True)
+    create_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['name']
@@ -200,7 +202,7 @@ class OrganizationalStructureOfficeLocation(AbstractLocation):
     """
     office = models.ForeignKey(OrganizationalStructureOffice,
                                on_delete=models.CASCADE)
-    create_date = models.DateTimeField(auto_now=True)
+    create_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['-create_date']
@@ -219,7 +221,7 @@ class OrganizationalStructureOfficeEmployee(models.Model):
                                  on_delete=models.CASCADE)
     office = models.ForeignKey(OrganizationalStructureOffice,
                                on_delete=models.CASCADE)
-    create_date = models.DateTimeField(auto_now=True)
+    create_date = models.DateTimeField(auto_now_add=True)
     description = models.TextField(max_length=1024, null=True,blank=True)
 
     class Meta:
