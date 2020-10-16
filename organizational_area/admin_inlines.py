@@ -44,6 +44,7 @@ class OrganizationalStructureOfficeEmployeeInline(admin.TabularInline):
     model = OrganizationalStructureOfficeEmployee
     form = OrganizationalStructureOfficeEmployeeModelForm
     extra = 0
+    autocomplete_fields = ('employee',)
 
 
 # Structure Location
@@ -71,3 +72,4 @@ class UserManageOrganizationalStructureInline(admin.TabularInline):
     model = UserManageOrganizationalStructure
     form = UserManageOrganizationalStructureModelForm
     extra = 0
+    autocomplete_fields = ('user',)
