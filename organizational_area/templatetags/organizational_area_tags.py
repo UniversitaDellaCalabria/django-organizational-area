@@ -1,4 +1,5 @@
 from django import template
+from django.db.models import Q
 
 from organizational_area.models import OrganizationalStructureOfficeEmployee
 
@@ -11,7 +12,9 @@ def employee_offices(user, structure=None):
     Returns all user offices relationships
     """
     if not user: return None
-    oe = OrganizationalStructureOfficeEmployee.objects.filter(employee=user)
+    query = Q(employee=user)
+    query_structure = ()
     if structure:
-        oe = oe.filter(office__organizational_structure=structure)
-    return oe
+        query_structure = Q(office__organizational_structure=structure)
+    return OrganizationalStructureOfficeEmployee.objects.filter(query,
+                                                                query_structure)
