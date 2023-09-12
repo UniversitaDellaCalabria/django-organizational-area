@@ -29,6 +29,7 @@ setup(
         'Framework :: Django',
         'Framework :: Django :: 2.0',
         'Framework :: Django :: 3.0',
+        'Framework :: Django :: 4.0',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: Apache License 2.0',
         'Operating System :: OS Independent',
@@ -36,6 +37,6 @@ setup(
         'Programming Language :: Python :: 3',
     ],
     install_requires=[
-        'django>=2.0,<4.0',
+        'django>=2.0,<5.0',
     ],
 )
